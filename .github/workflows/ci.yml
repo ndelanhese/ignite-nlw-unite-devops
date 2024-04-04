@@ -21,6 +21,7 @@ jobs:
         echo "sha=${SHA}" >> $GITHUB_OUTPUT
 
     - name: Build docker image
+      run: cd api/ 
       run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/nlw.service.passin:${{ steps.generate_sha.outputs.sha }} .
 
     - name: Log into the container registry
